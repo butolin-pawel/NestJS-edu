@@ -4,7 +4,7 @@ import { CatService } from './cat/cat.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostController } from './post/post.controller';
 import { PostService } from './post/post.service';
-import { Postapp } from './postapp/postapp';
+import { Postapp } from './post/postapp.model';
 
 @Module({
   imports: [TypeOrmModule.forRoot({

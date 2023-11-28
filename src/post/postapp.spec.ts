@@ -1,4 +1,4 @@
-import { Postapp } from './postapp';
+import { Postapp } from './postapp.model';
 
 describe('Postapp', () => {
   it('should be defined', () => {
