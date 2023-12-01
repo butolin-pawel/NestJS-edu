@@ -4,7 +4,10 @@ import { CatService } from './cat/cat.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostController } from './post/post.controller';
 import { PostService } from './post/post.service';
-import { Postapp } from './post/postapp.model';
+import { PostModel } from './post/Postapp.model';
+import { UserService } from './user/user.service';
+import { UserController } from './user/user.controller';
+import { User } from './user/user.model';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -14,10 +17,13 @@ import { Postapp } from './post/postapp.model';
     username: 'postgres',
     password: 'Vq2R8FJ',
     database: 'nestjs_db',
-    entities: [Postapp]
+    entities: [PostModel, User],
+    migrationsTableName : "migrations",
+    migrations : ["*.js"],
+    migrationsRun: true,
   }),
-TypeOrmModule.forFeature([Postapp])],
-  controllers: [ CatController,PostController],
-  providers: [CatService,PostService,],
+  TypeOrmModule.forFeature([PostModel,User])],
+  controllers: [CatController, PostController, UserController],
+  providers: [CatService, PostService, UserService,],
 })
-export class AppModule {}
+export class AppModule { }

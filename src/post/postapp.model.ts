@@ -1,28 +1,28 @@
 import { Column, Entity, Generated, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "post" })
-export class Postapp {
-    @PrimaryGeneratedColumn({    
+export class PostModel {
+    @PrimaryGeneratedColumn({
     })
-    id : number;
+    id: number;
 
     @Column({
-        nullable : false,
-        type : "varchar",
-        length : 30,
+        nullable: false,
+        type: "varchar",
+        length: 30,
     })
-    title : string;
+    title: string;
 
     @Column({
-        nullable : false,
-        type : "text",
+        nullable: false,
+        type: "text",
     })
-    description : string;
+    description: string;
 
     @Column({
-        nullable : false,
-        type : "varchar",
-        length : 30,
+        nullable: false,
+        type: "varchar",
+        length: 30,
     })
-    avatar : string;
+    avatar: string;
 }

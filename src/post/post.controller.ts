@@ -1,40 +1,31 @@
-import { Controller, Get, Post,Body, Param, Put, Delete, HttpCode, HttpStatus, Response } from '@nestjs/common';
-import { Postapp } from 'src/post/postapp.model';
+import { Controller, Get, Post, Body, Param, Put, Delete, HttpCode, HttpStatus, Response } from '@nestjs/common';
+import { PostModel } from 'src/post/Postapp.model';
 import { PostService } from './post.service';
+import { ImportPostDto } from './dto/import-post-dto';
 
 @Controller('post')
 export class PostController {
-    constructor(private postService : PostService){
+    constructor(private postService: PostService) {
 
     }
     @Get()
-    getAllPosts() : Promise<Postapp[]>{
+    getAllPosts(): Promise<PostModel[]> {
         return this.postService.getAll();
     }
     @Post()
-    addPost(@Body()  post : Postapp){
-        try{
+    addPost(@Body() post: ImportPostDto) {
         this.postService.addPost(post);
-        }
-        catch (error){
-            return HttpStatus.BAD_REQUEST;
-        }
     }
     @Get(':id')
-    getPostById(@Param('id') id : number) : Promise<Postapp>{
+    getPostById(@Param('id') id: number): Promise<PostModel> {
         return this.postService.getById(id);
     }
     @Put()
-    updatePost(@Body() post :  Postapp){
-        
+    updatePost(@Body() post: PostModel) {
         this.postService.updatePost(post);
     }
-    // @Put(':id')
-    // updatePost(@Body() post : Postapp,@Param('id') id ){
-    //     this.postService.updatePost(post);
-    // }
     @Delete(':id')
-    deletePost(@Param('id') id : number){
+    deletePost(@Param('id') id: number) {
         this.postService.deletePost(id);
     }
 }

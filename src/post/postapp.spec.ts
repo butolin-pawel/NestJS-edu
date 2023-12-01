@@ -1,7 +1,7 @@
-import { Postapp } from './postapp.model';
+import { PostModel } from './Postapp.model';
 
-describe('Postapp', () => {
+describe('PostModel', () => {
   it('should be defined', () => {
-    expect(new Postapp()).toBeDefined();
+    expect(new PostModel()).toBeDefined();
   });
 });
