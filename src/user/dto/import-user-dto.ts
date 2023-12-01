@@ -1,4 +1,4 @@
-import { IsBoolean, IsNotEmpty, IsString } from "class-validator";
+import { IsBoolean, IsEmail, IsNotEmpty, IsString } from "class-validator";
 
 export class ImportUserDto {
     @IsString()
@@ -7,6 +7,7 @@ export class ImportUserDto {
 
     @IsString()
     @IsNotEmpty()
+    @IsEmail()
     readonly email: string;
 
     @IsBoolean()
